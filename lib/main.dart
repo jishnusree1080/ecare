@@ -1,12 +1,14 @@
 import 'package:ecare/view/bot.dart';
+import 'package:ecare/view/homepage.dart';
+import 'package:ecare/view/homescreen.dart';
 import 'package:ecare/view/onboard.dart';
 import 'package:ecare/view/signup.dart';
 import 'package:ecare/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'model/tabs/HomeTab.dart';
-import 'model/tabs/ScheduleTab.dart';
+
 import 'view/signin.dart';
 
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown
     ]);
-    return  MaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // home: MainPage(),
       initialRoute: 'splash',
@@ -33,7 +35,8 @@ class MyApp extends StatelessWidget {
         'signin' : (context)=> SignIn(),
         'signup' : (context)=> SignUp(),
         'chatbot': (context)=> ChatBot(),
-        'home': (context)=>ScheduleTab()
+        'home': (context)=>HomeScreen(title: 'Ecare',)
+
       },
     );
   }

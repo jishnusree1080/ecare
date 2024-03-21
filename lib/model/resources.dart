@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_controller.dart';
 
+
 import 'package:flutter/material.dart';
+
+import 'Services.dart';
+import 'navigation.dart';
 
 int currentPage = 0;
 CarouselController carouselController = CarouselController();
@@ -48,3 +52,58 @@ class BezierClipper1 extends CustomClipper<Path>
     return true;
   }
 }
+
+const List<TabItem> items = [
+  TabItem(
+    icon: Icons.home,
+    // title: 'Home',
+  ),
+  TabItem(
+    icon: Icons.search_sharp,
+    title: 'Shop',
+  ),
+  TabItem(
+    icon: Icons.favorite_border,
+    title: 'Wishlist',
+  ),
+  TabItem(
+    icon: Icons.shopping_cart_outlined,
+    title: 'Cart',
+  ),
+  TabItem(
+    icon: Icons.account_box,
+    title: 'profile',
+  ),
+];
+
+
+List allServices = [
+  Services(Servicename : 'Lab test', image:'assets/images/PngItem.png', ServiceType:"Medical",time: "at 5am"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Hospital', image:'assets/images/hospital.jpeg', ServiceType:"Emergency",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 2pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 3am"),
+  Services(Servicename : 'Lab test', image:'assets/images/PngItem.png', ServiceType:"Medical",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Hospital', image:'assets/images/hospital.jpeg', ServiceType:"Emergency",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/PngItem.png', ServiceType:"Medical",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Hospital', image:'assets/images/hospital.jpeg', ServiceType:"Emergency",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/PngItem.png', ServiceType:"Medical",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Hospital', image:'assets/images/hospital.jpeg', ServiceType:"Emergency",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+  Services(Servicename : 'Lab test', image:'assets/images/doctor05.jpeg', ServiceType:"dadd",time: "at 4pm"),
+
+
+
+
+
+];
+
+
+

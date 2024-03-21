@@ -44,17 +44,18 @@ class _ChatBotState extends State<ChatBot> {
   }
 
   _askNextQuestion() {
+    setState(() {
+      
+      
+    });
     Future.delayed(Duration(seconds: 2), () {
       if (currentQuestionIndex < healthQuestions.length) {
         if (currentQuestionIndex == 0) {
           // Show buttons for sponsor or provider selection
           setState(() {
-            _messages.add(
-              ChatMessage(
-                text: 'Are you a sponsor or provider?',
-                isUser: false,
-              ),
-            );
+            _messages.add(ChatMessage(text: 'Hi', isUser: false),);
+            _messages.add(ChatMessage(text: 'WELCOME TO ECARE',textStyle: TextStyle(fontSize: 70,fontWeight: FontWeight.w900,fontFamily: 'Decorative ',color: Colors.green), isUser: false,),);
+            _messages.add(ChatMessage(text: 'Are you lookig asistance for yourself or some others', isUser: false),);
             _messages.add(
               ChatMessage(
                 text: '', // Empty text, as we're going to replace it with buttons
@@ -62,25 +63,110 @@ class _ChatBotState extends State<ChatBot> {
                 customWidget: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(
+                    ElevatedButton(style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                          return Colors.blue;
+
+                        }
+                    ),
+            ),
+
                       onPressed: () {
                         // User selected Sponsor
-                        _handleBotResponse('Sponsor');
+                        sound.playSound2();
+                        _handleBotResponse('Yourself');
                       },
-                      child: Text('Sponsor'),
+                      child: Text('Myself',style: TextStyle(color: Colors.white)),
                     ),
                     SizedBox(width: 10),
                     ElevatedButton(
+
+                      style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              return Colors.blue;
+
+            }
+            ),
+            // return Colors.amberAccent; ,
+                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                          // return Colors.amberAccent;
+                          if (states.contains(MaterialState.hovered))
+                            return Colors.blue; //<-- SEE HERE
+                          return Colors.green; // Defer to the widget's default.
+                        },
+                      ),
+                    ),                      onPressed: () {
+                        // User selected Provider
+                      sound.playSound2();
+                        _handleBotResponse('Relative');
+                      },
+                      child: Text('Relative',style: TextStyle(color: Colors.white),),
+                    ),
+
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                            return Colors.blue;
+
+                          }
+                      ),
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered))
+                              return Colors.redAccent; //<-- SEE HERE
+                            return Colors.green; // Defer to the widget's default.
+                          },
+                        ),
+                      ),
+
                       onPressed: () {
                         // User selected Provider
-                        _handleBotResponse('Provider');
+                        sound.playSound2();
+                        _handleBotResponse('Friend');
                       },
-                      child: Text('Provider'),
+                      child: Text('Friend',style: TextStyle(color: Colors.white)),
                     ),
                   ],
                 ),
               ),
             );
+            // _messages.add(
+            //   ChatMessage(
+            //     text: 'Are you a sponsor or provider?',
+            //     isUser: false,
+            //   ),
+            // );
+            // _messages.add(
+            //   ChatMessage(
+            //     text: '', // Empty text, as we're going to replace it with buttons
+            //     isUser: true,
+            //     customWidget: Row(
+            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       children: [
+            //         ElevatedButton(
+            //
+            //           onPressed: () {
+            //             // User selected Sponsor
+            //             _handleBotResponse('Sponsor');
+            //           },
+            //           child: Text('Sponsor'),
+            //         ),
+            //         SizedBox(width: 10),
+            //         ElevatedButton(
+            //           onPressed: () {
+            //             // User selected Provider
+            //             _handleBotResponse('provider');
+            //           },
+            //           child: Text('Provider'),
+            //         ),
+            //
+            //
+            //       ],
+            //     ),
+            //   ),
+            // );
           });
         } else if (currentQuestionIndex == 1) {
           // Ask about services based on the previous selection
@@ -101,19 +187,43 @@ class _ChatBotState extends State<ChatBot> {
 
                   children: [
                     ElevatedButton(
+                      style: ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) {
+              return Colors.blue;
+
+              }
+              ),
+
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered))
+                              return Colors.redAccent; //<-- SEE HERE
+                            return null; // Defer to the widget's default.
+                          },
+                        ),
+                      ),
                       onPressed: () {
                         // User selected a service (customize as needed)
                         _handleBotResponse('Service A');
+                        sound.playSound2();
                       },
-                      child: Text('Service A'),
+                      child: Text('Service A',style:  TextStyle(color:  Colors.white),),
                     ),
                     SizedBox(width: 10),
                     ElevatedButton(
+            style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                  return Colors.blue;
+
+                }
+            ),
+            ),
                       onPressed: () {
                         // User selected another service (customize as needed)
                         _handleBotResponse('Service B');
+                        sound.playSound2();
                       },
-                      child: Text('Service B'),
+                      child: Text('Service B',style: TextStyle(color: Colors.white),),
                     ),
                     // Add more buttons for additional services
                   ],
@@ -182,14 +292,14 @@ class _ChatBotState extends State<ChatBot> {
           },
         ),
         clipBehavior: Clip.antiAlias,
-        backgroundColor: Color(0xFF4169e1),
+        backgroundColor: Color(0xFF009EDC),
         centerTitle: true,
-        title: const Text('Ecare Bot',style:  TextStyle(color: Colors.white,letterSpacing: 0.25,fontSize: 17 ),),
+        title: const Text('Ecare',style:  TextStyle(color: Colors.white,letterSpacing: 0.25,fontSize: 17 ),),
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(33))),
         actions: [
           InkWell(
             onTap: (){},
-            child: const Padding(padding: EdgeInsets.all(8.0),child: Icon(Icons.notification_important,size: 20,color: Colors.amberAccent,),),
+            child: const Padding(padding: EdgeInsets.all(8.0),child: Icon(Icons.notifications,size: 20,color: Colors.lime,),),
           )
 
         ],
@@ -287,8 +397,9 @@ class ChatMessage extends StatelessWidget {
   final String text;
   final bool isUser;
   final Widget? customWidget;
+  final TextStyle? textStyle; // New parameter for text style
 
-  ChatMessage({required this.text, required this.isUser, this.customWidget});
+  ChatMessage({required this.text, required this.isUser, this.customWidget,this.textStyle});
 
   @override
   Widget build(BuildContext context) {

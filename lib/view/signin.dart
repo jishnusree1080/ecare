@@ -23,65 +23,7 @@ class SignIn extends StatelessWidget {
       backgroundColor: const Color(0xFF009EDC),
       body: Stack(
         children: <Widget>[
-          // SingleChildScrollView(
-          //   child: Positioned(child:
-          //   ClipPath(
-          //     clipper: BezierClipper1(),
-          //     child: Container(
-          //       height: MediaQuery.sizeOf(context).height,
-          //       width: double.infinity,
-          //       color: themeBlue,
-          //     ),
-          //   ),),
-          // ),
 
-          // Positioned(
-          //   right: -getSmallDiameter(context)/3 ,
-          //   top: -getSmallDiameter(context)/3,
-          //   child: Container(
-          //     width: getSmallDiameter(context),
-          //     height: getSmallDiameter(context),
-          //     decoration: const BoxDecoration(
-          //         shape: BoxShape.circle,
-          //         gradient: LinearGradient(
-          //             colors: [Color(0xFF00E5FF), Color(0xFF1200FF)],
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter)),
-          //   ),
-          // ),
-          // Positioned(
-          //   left: -getBiglDiameter(context) / 4,
-          //   top: -getBiglDiameter(context) / 4,
-          //   child: Container(
-          //     width: getBiglDiameter(context),
-          //     height: getBiglDiameter(context),
-          //     decoration: const BoxDecoration(
-          //         shape: BoxShape.circle,
-          //         gradient: LinearGradient(
-          //             colors: [Color(0xFF00E5FF), Color(0xFF1200FF)],
-          //             begin: Alignment.topCenter,
-          //             end: Alignment.bottomCenter)),
-          //     child: const Center(
-          //       child: Text(
-          //         "Hi, hello",
-          //         style: TextStyle(
-          //             fontFamily: "Pacifico",
-          //             fontSize: 40,
-          //             color: Colors.white),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // Positioned(
-          //   right: -getBiglDiameter(context) / 2,
-          //   bottom: -getBiglDiameter(context) / 2,
-          //   child: Container(
-          //     width: getBiglDiameter(context),
-          //     height: getBiglDiameter(context),
-          //     decoration: const BoxDecoration(
-          //         shape: BoxShape.circle, color: Color(0xFFF3E9EE)),
-          //   ),
-          // ),
           Align(
             alignment: Alignment.topCenter,
             child: ListView(
@@ -160,14 +102,7 @@ class SignIn extends StatelessWidget {
 
                               },
                             ),
-                            // Checkbox(
-                            //   value: this.Checkvalue,
-                            //   onChanged: () {
-                            //     setState(() {
-                            //       this.Checkvalue = true;
-                            //     });
-                            //   },
-                            // ),
+
                             const Text(
                               "REMEMBER ME",
                               style:
@@ -183,40 +118,29 @@ class SignIn extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
                         height: 40,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    // Color(0xFF1111A7),
+                        child: MaterialButton(
+                          elevation: 0,
+                          shape: LinearBorder(start: LinearBorderEdge(size: .1),top:  LinearBorderEdge(size: .9)),
 
-                                    Color(0xFF1298FF),
-                                    Color(0xFF1260FF),
-
-
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter)),
-                          child: Material(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              splashColor: const Color(0xFF1200FF),
-                              onTap: () {
-                                sound.playSound();
-                                SignInCheck(emailEditingController.value.text,passwordEditingController.value.text,context);
-                              },
-                              child: const Center(
-                                child: Text(
-                                  "LOGIN",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700),
-                                ),
+                          //borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          // child: InkWell(
+                          //   borderRadius: BorderRadius.circular(20),
+                            //splashColor: const Color(0xFF1200FF),
+                            onPressed: () {
+                              sound.playSound();
+                              Navigator.pushReplacementNamed(context, 'home');
+                             // SignInCheck(emailEditingController.value.text,passwordEditingController.value.text,context);
+                            },
+                            child: const Center(
+                              child: Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
-                          ),
+                                                 //   ),
                         ),
                       ),
                       // FloatingActionButton(
@@ -310,7 +234,7 @@ class SignIn extends StatelessWidget {
                           " SIGN UP",
                           style: TextStyle(
                               fontSize: 11,
-                              color: Color(0xFFff2c2c),
+                              color: Color(0xFFff0000),
                               fontWeight: FontWeight.w700),
                         ),
                       )
@@ -358,7 +282,8 @@ class SignIn extends StatelessWidget {
       );
       ScaffoldMessenger.of(context).showSnackBar(signInUSnack);
 
-    }else{if(Pass != Password){
+    }
+    else{if(Pass != Password){
       const signInUSnack = SnackBar(
         content: Center(child: Text('please check Password ',style:TextStyle(color: Color(0xFFFF4891) ))),
         backgroundColor: Color(0xFFb8d3ff),
